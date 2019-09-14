@@ -24,13 +24,7 @@ button.on("click", function() {
     var inputCityValue = inputCityElement.property("value");
     var inputCountryValue = inputCountryElement.property("value");
     var inputShapeValue = inputShapeElement.property("value");
-
-  
-    console.log(inputDateValue);
-    console.log(inputCityValue);
-    console.log(inputCountryValue);
-    console.log(inputShapeValue);
-
+    //Filter Table based on inputs
     if (inputCityValue.length == 0) {
       var cityFilteredData = tableData;
     } else {
@@ -51,19 +45,14 @@ button.on("click", function() {
     } else {
       var finalFilteredData = countryFilteredData.filter(sighting => sighting.shape === inputShapeValue);
     };
-    console.log(cityFilteredData)
-    console.log(dateFilteredData)
-    console.log(countryFilteredData)
-    console.log(finalFilteredData)
-    var filteredData = tableData.filter(sighting => sighting.city === inputCityValue);
-    
+    //Clear Table
     var tableHeaderRowCount = 1;
     var table = document.getElementById('ufo-table');
     var rowCount = table.rows.length;
     for (var i = tableHeaderRowCount; i < rowCount; i++) {
         table.deleteRow(tableHeaderRowCount);
     };
-
+    //Repopulate Table with new Data
     console.log(finalFilteredData);
     finalFilteredData.forEach((sighting) => {
       var row = tbody.append("tr");
@@ -73,6 +62,7 @@ button.on("click", function() {
       });
     });
 });
+//a button to reset the table
 button2.on("click", function(){
   var tableHeaderRowCount = 1;
   var table = document.getElementById('ufo-table');
